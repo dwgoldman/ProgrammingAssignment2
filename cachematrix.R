@@ -15,7 +15,6 @@
 ## 3.set the value of the matrix inverse
 ## 4.get the value of the matrix inverse
 
-
 makeCacheMatrix <- function(x = matrix()) {
   minv <- matrix()
   
@@ -29,7 +28,7 @@ makeCacheMatrix <- function(x = matrix()) {
   get <- function() x
   
   ## define the set matrix inverse function
-  setminv <- function() minv <<- solve
+  setminv <- function(minv) minv <<- solve
   
   ## define the get matrix inverse function
   getminv <- function() minv
@@ -49,7 +48,7 @@ cacheSolve <- function(x, ...) {
   minv <- x$getminv()
   
   ##test if the matrix inverse is cached already
-  if(!is.na(minv)) {
+  if(all(!is.na(minv))) {
     message("getting cached data")
     return(minv)
   }
@@ -60,3 +59,4 @@ cacheSolve <- function(x, ...) {
   x$setminv(minv)
   minv
 }
+
